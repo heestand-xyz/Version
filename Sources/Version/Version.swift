@@ -19,6 +19,13 @@ public struct Version: Equatable, Comparable, Codable {
     
     public var semanticWithTag: String { tag != nil ? "\(semantic)-\(tag!)" : semantic }
     
+    public static let zero = Version(0, 0, 0)
+    
+    public static let os: Version = {
+        let v = ProcessInfo.processInfo.operatingSystemVersion
+        return Version(v.majorVersion, v.minorVersion, v.patchVersion)
+    }()
+    
     public static let currentVersion: Version? = {
         guard let raw: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String else { return nil }
         return Version(raw)
