@@ -1,3 +1,3 @@
 # Version
 
-A swift package to work with semantic versioning.
+A swift package to compare semantic versioning.
